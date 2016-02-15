@@ -59,6 +59,8 @@ function starWarsHangman(){
 				if(lives < 1){
 					showStatus.innerHTML = "You have run out of lives. The game is over.";
 					showGame.innerHTML = "<span class=text-danger>" + solution+ "</span>"
+					loseAudio.play();
+					console.log("Game Over :(");
 				} else {
 				//guess is in the solution. Reveal the solution with the correct guess.
 					

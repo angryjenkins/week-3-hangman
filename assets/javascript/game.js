@@ -55,6 +55,7 @@ function starWarsHangman(){
 				//guess is not in solution. take a life, add guess to werong array. Continue 
 				lives--;
 				showLives.innerHTML = lives;
+				showGuessCheck.innerHTML = "<span class='text-danger'>There is no " + guess + ".</span>";
 
 				if(lives < 1){
 					showStatus.innerHTML = "You have run out of lives. The game is over.";
@@ -69,7 +70,7 @@ function starWarsHangman(){
 			} else {
 				//correct guess. Display letter in the game.
 				showLives.innerHTML = lives;
-				showGuessCheck.innerHTML = guess + " works!";
+				showGuessCheck.innerHTML = "<span class='text-success'>" + guess + " works!</span>";
 				right.push(guess);
 				showGame.innerHTML = reveal.join("");
 			}

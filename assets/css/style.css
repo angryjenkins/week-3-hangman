@@ -10,7 +10,7 @@ header {
 	padding: 20px;
 }
 
-#gameDisplay, #lives, #guessed, #lastGuess, #gameStatus {
+#gameDisplay, #lives, #guessed, #lastGuess, #gameStatus, #letterCheck {
 	color: yellow;
 	text-align: center;
 }

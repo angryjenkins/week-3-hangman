@@ -12,9 +12,8 @@ function starWarsHangman(){
 		showGuessed = document.getElementById("guessed");
 		showLastGuess = document.getElementById("lastGuess");
 		showStatus = document.getElementById("gameStatus");
-
-		loseAudio = new Audio('audio_file.mp3');
-
+		showGuessCheck = document.getElementById("letterCheck");
+		loseAudio = new Audio('aassets/audio/no.mp3');
 
 		//check if the letters in solutioin are in the alphabet, so people don't have to guess numbers 
 
@@ -24,7 +23,7 @@ function starWarsHangman(){
 
 	for(var i=0;i<solution.length;i++){
 
-		if (alphabet.indexOf(solution[i]) == -1){
+		if (alphabet.indexOf(solution[i]) == -1 || right.indexOf(solution[i]) != -1){
 			reveal.push(solution[i]);
 		} else {
 			reveal.push("_");
@@ -51,20 +50,26 @@ function starWarsHangman(){
 			guessed.push(guess);
 			showLastGuess.innerHTML = guess;
 			showGuessed.innerHTML = guessed;
+
 			if (solution.indexOf(guess) == -1){
 				//guess is not in solution. take a life, add guess to werong array. Continue 
 				lives--;
 				showLives.innerHTML = lives;
-				if(lives == 0){
+
+				if(lives < 1){
 					showStatus.innerHTML = "You have run out of lives. The game is over.";
-					return;
+					showGame.innerHTML = "<span class=text-danger>" + solution+ "</span>"
 				} else {
 				//guess is in the solution. Reveal the solution with the correct guess.
 					
 				}
 		
 			} else {
-				//correct guess. Display letter in the  
+				//correct guess. Display letter in the game.
+				showLives.innerHTML = lives;
+				showGuessCheck.innerHTML = guess + " works!";
+				right.push(guess);
+				showGame.innerHTML = reveal.join("");
 			}
 		}
 	}

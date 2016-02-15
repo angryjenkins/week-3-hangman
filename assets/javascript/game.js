@@ -1,41 +1,47 @@
-function starWarsHangman(){
-	var alphabet = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z],
-	 	words = ["Luke Skywalker","Han Solo","Leia Organa"],
-		guess = String.fromCharCode(e.keyCode).toLowerCase(),
-		solution = [Math.floor(Math.random()*words.length)],
-		lives = 6,
-		flag = 0; //fllag will increase each time the guess occurs in the solution.
 
+var game = {};
+ 	game.words = ["han solo","luke skywealker","tatooine"];//this is a wordlist of star wars-related answers.
+	game.solution = game.words[Math.floor(Math.random()*game.words.length)];
+	game.printAnswer = [];
+	game.right = [];
+	game.wrong = [];
+	game.lives = 6;
+	
 
-	//check if the letters in solutioin are in the alphabet, so people don't have to guess numbers 
-	for(var i=o;i<solution.length;i++){
-		var alphaFlag=0;
+//check if the letters in solutioin are in the alphabet, so people don't have to guess numbers 
 
-		if(guess==alphabet[i]){
-			alphaFlag++;
-		}
+function renderGame(){
+	//check solution for special characters.
+	console.log("Game Rendered!");
+ 	var alphabet = [a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z];
 
-		if(alphaFlag > 0);{
-			//display as a blank upon load
+	for(var i=0;i<game.solution.length;i++){
+
+		if (alphabet.indexOf(game.solution[i]) == -1){
+			//display a blank.
 		} else {
-			//display the character upon load.
+			//display the letter.
 		}
-	}
-
-	for (var i=0;i<solution.length;i++){
-		//loop checks each letter of the solution to see if the guess is in it. If it is, add one to the flag.
-		if(guess==solution[i]){
-			flag++;
-		} 
-		
-		//display the blanks in the div#spaces if it is in the aplhabet array - otherwise, reveal it in the blank.
-	}
-
-	if (flag > 0){
-		alert(guess + "works! Continue.");
-		//flag will add one every time it's in the solution. If flag is more than 0, the guess is correct.
-	} else {
-		//guess is not in the solution
-		alert("There is no " + guess + ".");
 	}
 }
+
+//play the game
+
+document.onkeyup = function(event) {
+	var guess = String.fromCharCode(event.keyCode).toLowerCase();
+	if(game.right.indexOf(guess) != -1 || game.wrong.indexOf(guess) != -1){
+		//answer has been rpeviously guessed. Notify player to try again.
+	} else {
+		//answer has not been guessed already. Resume the game.
+		if (game.solution.indexOf(guess) == -1){
+			game.lives--;
+			if(game.lives == 0){
+				
+			}
+			//guess is not in solution. take a life, add guess to werong array.
+		} else {
+			//correct guess. Display letter in the game. 
+		}
+	}
+}
+

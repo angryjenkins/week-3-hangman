@@ -5,3 +5,7 @@ br.brClear {
 header {
 	border-bottom: 2px solid white;
 } 
+
+.game p{
+	padding: 20px;
+}

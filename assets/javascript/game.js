@@ -13,7 +13,7 @@ function starWarsHangman(){
 		showLastGuess = document.getElementById("lastGuess");
 		showStatus = document.getElementById("gameStatus");
 		showGuessCheck = document.getElementById("letterCheck");
-		loseAudio = new Audio('aassets/audio/no.mp3');
+		loseAudio = new Audio('assets/audio/no.mp3');
 
 		//check if the letters in solutioin are in the alphabet, so people don't have to guess numbers 
 

@@ -82,6 +82,8 @@ function starWarsHangman(){
 
 				if(reveal.indexOf("_") == -1){
 					showStatus.innerHTML = "You got it! You sure know your Star Wars, ... nerd.";
+					showGame.innerHTML = "<span class=text-success>" + solution+ "</span>"
+
 				}
 			}
 		}

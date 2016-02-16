@@ -1,5 +1,5 @@
 function starWarsHangman(){
-	var words = ["han solo","luke skywalker","tatooine","jedi","chewbacca","jakku","sith"]; //this is a wordlist of star wars-related answers.
+	var words = ["han solo","luke skywalker","tatooine","jedi","chewbacca","jakku","sith","lightsaber","blaster","alderaan","starkiller","kylo ren","rey","stormtrooper","maz kanata","jabba the hutt","sarlak","lando calrissian","emperor palpatine","princess leia organa","naboo","jat jar binks","gungan","hoth","rebels","poe dameron","tie fighter","darth vader","darth maul","yoda","ki-adi mundi","kit fisto","plo koon","obi-wan kenobi","mace windu","padme amidala","wookie","ewok","jawa","rancor","greedo","george lucas","grand moff tarkin","general hux","empire","republic","resistance","first order","general grievous","captain phasma","the force awakens","a new hope","revenge of the sith","return of the jedi","the phantom menace","the clone wars","the empire strikes back"]; //this is a wordlist of star wars-related answers.
 		solution = words[Math.floor(Math.random()*words.length)];
 		reveal = [];
 		guessed = [];
@@ -15,14 +15,13 @@ function starWarsHangman(){
 		showGuessCheck = document.getElementById("letterCheck");
 		loseAudio = new Audio('assets/audio/no.mp3');
 
-		//check if the letters in solutioin are in the alphabet, so people don't have to guess numbers 
+		//check if the letters in solution are in the alphabet, so people don't have to guess numbers 
 
 	 	alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h','i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
 	        't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
-
+	// render the game, substituting letters to guess with "_"      
 	for(var i=0;i<solution.length;i++){
-
 		if (alphabet.indexOf(solution[i]) == -1 || right.indexOf(solution[i]) != -1){
 			reveal.push(solution[i]);
 		} else {
@@ -64,7 +63,6 @@ function starWarsHangman(){
 					console.log("Game Over :(");
 				} else {
 				//guess is in the solution. Reveal the solution with the correct guess.
-					
 				}
 		
 			} else {
@@ -72,7 +70,14 @@ function starWarsHangman(){
 				showLives.innerHTML = lives;
 				showGuessCheck.innerHTML = "<span class='text-success'>" + guess + " works!</span>";
 				right.push(guess);
+
+				//replace "guess" in the reveal array at proper keys. PROBLEM - only replacing one instance.
+				reveal[solution.indexOf(guess)] = guess;
 				showGame.innerHTML = reveal.join("");
+
+				if(reveal.indexOf("_") == -1){
+					showStatus.innerHTML = "You got it! You sure know your Star Wars, ... nerd.";
+				}
 			}
 		}
 	}

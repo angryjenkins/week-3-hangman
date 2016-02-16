@@ -72,7 +72,12 @@ function starWarsHangman(){
 				right.push(guess);
 
 				//replace "guess" in the reveal array at proper keys. PROBLEM - only replacing one instance.
-				reveal[solution.indexOf(guess)] = guess;
+				for(i=0;i<solution.length;i++){
+					if(solution[i] == guess){
+						reveal[i] = guess;
+					}
+				}
+
 				showGame.innerHTML = reveal.join("");
 
 				if(reveal.indexOf("_") == -1){

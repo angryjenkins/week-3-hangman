@@ -1,5 +1,5 @@
 function starWarsHangman(){
-	var words = ["han solo","luke skywalker","tatooine","jedi","chewbacca","jakku","sith","lightsaber","blaster","alderaan","starkiller","kylo ren","rey","stormtrooper","maz kanata","jabba the hutt","sarlak","lando calrissian","emperor palpatine","princess leia organa","naboo","jat jar binks","gungan","hoth","rebels","poe dameron","tie fighter","darth vader","darth maul","yoda","ki-adi mundi","kit fisto","plo koon","obi-wan kenobi","mace windu","padme amidala","wookie","ewok","jawa","rancor","greedo","george lucas","grand moff tarkin","general hux","empire","republic","resistance","first order","general grievous","captain phasma","the force awakens","a new hope","revenge of the sith","return of the jedi","the phantom menace","the clone wars","the empire strikes back"]; //this is a wordlist of star wars-related answers.
+	var words = ["han solo","luke skywalker","tatooine","jedi","chewbacca","jakku","sith","lightsaber","blaster","alderaan","starkiller","kylo ren","rey","stormtrooper","maz kanata","jabba the hutt","sarlak","lando calrissian","emperor palpatine","princess leia organa","naboo","jat jar binks","gungan","hoth","rebels","poe dameron","tie fighter","darth vader","darth maul","yoda","ki-adi mundi","kit fisto","plo koon","obi-wan kenobi","mace windu","padme amidala","wookie","ewok","jawa","rancor","greedo","george lucas","grand moff tarkin","general hux","empire","republic","resistance","first order","general grievous","captain phasma","the force awakens","a new hope","revenge of the sith","return of the jedi","the phantom menace","the clone wars","the empire strikes back","death star","midi-chlorians","star destoryer"]; //this is a wordlist of star wars-related answers.
 		solution = words[Math.floor(Math.random()*words.length)];
 		reveal = [];
 		guessed = [];
@@ -14,6 +14,7 @@ function starWarsHangman(){
 		showStatus = document.getElementById("gameStatus");
 		showGuessCheck = document.getElementById("letterCheck");
 		loseAudio = new Audio('assets/audio/no.mp3');
+		winAudio = new Audio('assets/audio/greatshot.mp3');
 
 		//check if the letters in solution are in the alphabet, so people don't have to guess numbers 
 
@@ -82,7 +83,8 @@ function starWarsHangman(){
 
 				if(reveal.indexOf("_") == -1){
 					showStatus.innerHTML = "You got it! You sure know your Star Wars, ... nerd.";
-					showGame.innerHTML = "<span class=text-success>" + solution+ "</span>"
+					showGame.innerHTML = "<span class=text-success>" + solution+ "</span>";
+					winAudio.play();
 
 				}
 			}

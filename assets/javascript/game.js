@@ -41,7 +41,6 @@ function starWarsHangman(){
 
 	document.onkeyup = function(event) {
 		var guess = String.fromCharCode(event.keyCode).toLowerCase();
-		showLastGuess.innerHTML = guess;
 
 		if(guessed.indexOf(guess) != -1){
 			showStatus.innerHTML = "You have already guessed " + guess +". Try again.";

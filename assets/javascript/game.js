@@ -91,6 +91,10 @@ function starWarsHangman(){
 					winAudio.play();
 					replay.className = "text-center";
 					console.log("You win!");
+
+					if(lives == 6){
+						showStatus.innerHTML = "PERFECT SCORE! You're either really nerdy or you've played too much.";
+					}
 				}
 			}
 		}

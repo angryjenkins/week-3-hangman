@@ -16,7 +16,7 @@ function starWarsHangman(){
 		winAudio = new Audio('assets/audio/greatshot.mp3');
 		replay = document.getElementById("replay");
 
-		//check if the letters in solution are in the alphabet, so people don't have to guess numbers 
+		//check if the letters in solution are in the alphabet, so people don't have to guess numbers/hyphens/spaces
 
 	 	alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h','i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
 	        't', 'u', 'v', 'w', 'x', 'y', 'z'];
@@ -50,7 +50,7 @@ function starWarsHangman(){
 			showStatus.innerHTML = "";
 			guessed.push(guess);
 			showLastGuess.innerHTML = guess;
-			showGuessed.innerHTML = guessed;
+			showGuessed.innerHTML = guessed.join(" &middot; ");
 
 			if (solution.indexOf(guess) == -1){
 				//guess is not in solution. take a lihfe, add guess to werong array. Continue 

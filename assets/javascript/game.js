@@ -60,7 +60,7 @@ function starWarsHangman(){
 				showGuessCheck.innerHTML = "<span class='text-danger'>There is no " + guess + ".</span>";
 
 				if(lives < 1){
-					showStatus.innerHTML = "You lose! Good day sir. The game is over.";
+					showStatus.innerHTML = "You lose! Game over, bro.";
 					showGame.innerHTML = "<span class=text-danger>" + solution+ "</span>"
 					loseAudio.play();
 					replay.className = "text-center";
